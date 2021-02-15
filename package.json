@@ -3,18 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/plugin-transform-for-of": "^7.12.13",
+    "@storeon/websocket": "^1.2.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.2",
+    "react-virtualized-auto-sizer": "^1.0.4",
+    "react-window": "^1.8.6",
+    "storeon": "^3.1.4",
+    "styled-components": "^5.2.1",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "start-prod": "serve -s build -l 4000",
     "test": "react-scripts test",
+    "e2e": "testcafe chrome e2e/",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -34,5 +42,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "serve": "^11.3.2",
+    "testcafe": "^1.10.1"
   }
 }
