@@ -3,6 +3,7 @@
 <img src="./public/main.png" width="313" height="365" alt="widget">
 
 Cryptocurrency prices in real-time
+Svelte version [here](https://github.com/enemycnt/bi-widget-svelte)
 
 ### Built With
 
