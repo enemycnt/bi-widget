@@ -2,7 +2,7 @@
 
 body {
   margin: 0;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'IBM Plex Sans', "Arial Unicode MS", Arial, arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

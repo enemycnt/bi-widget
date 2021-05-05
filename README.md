@@ -2,7 +2,7 @@
 
 <img src="./public/main.png" width="313" height="365" alt="widget">
 
-Cryptocurrency prices in real-time
+Cryptocurrency prices in real-time! [Live version](https://bi-widget.vercel.app/)
 Svelte version [here](https://github.com/enemycnt/bi-widget-svelte)
 
 ### Built With
