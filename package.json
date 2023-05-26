@@ -1,6 +1,6 @@
 {
   "name": "bi-widget",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "@babel/plugin-transform-for-of": "^7.12.13",
@@ -18,12 +18,10 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "start-prod": "serve -s build -l 4000",
-    "test": "react-scripts test",
-    "e2e": "testcafe chrome e2e/",
-    "eject": "react-scripts eject"
+    "start": "vite",
+    "build": "vite build",
+    "start-prod": "vite preview",
+    "e2e": "testcafe chrome e2e/"
   },
   "eslintConfig": {
     "extends": [
@@ -44,7 +42,10 @@
     ]
   },
   "devDependencies": {
+    "@vitejs/plugin-react": "^4.0.0",
     "serve": "^11.3.2",
-    "testcafe": "^1.10.1"
+    "testcafe": "^1.10.1",
+    "vite": "^4.3.9",
+    "vite-tsconfig-paths": "^4.2.0"
   }
 }

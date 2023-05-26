@@ -1,9 +1,9 @@
-import { Selector } from 'testcafe'; 
+import { Selector } from "testcafe";
 
-fixture `Main Page`// 
-    .page `http://localhost:3000`;  
+fixture`Main Page` //
+  .page`http://localhost:5173`;
 
-test('Select BNB category', async t => {
+test("Select BNB category", async (t) => {
   const category = Selector('[data-testid="simple-category"]').withExactText(
     "BNB"
   );
@@ -18,20 +18,19 @@ test('Select BNB category', async t => {
   for (let i = 0; i < productNameCount; i++) {
     await t.expect(Selector(productName).nth(i).textContent).contains("/BNB");
   }
-})
+});
 
-test('Search for eth/btc', async t => {
-  const searchField = Selector('[data-testid="search-input"]')
+test("Search for eth/btc", async (t) => {
+  const searchField = Selector('[data-testid="search-input"]');
   const productName = Selector('[data-testid="product-name"]');
   const productNameFirst = Selector('[data-testid="product-name"]').nth(0);
 
-
   await t
-    .typeText(searchField, 'eth/btc')
+    .typeText(searchField, "eth/btc")
     .hover(productNameFirst)
-    .expect(productNameFirst.textContent).contains("ETH/BTC")
+    .expect(productNameFirst.textContent)
+    .contains("ETH/BTC");
 
-    const productNameCount = await productName.count;
-    await t.expect(productNameCount).eql(1)
-
-})
+  const productNameCount = await productName.count;
+  await t.expect(productNameCount).eql(1);
+});
