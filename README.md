@@ -7,16 +7,15 @@ Svelte version [here](https://github.com/enemycnt/bi-widget-svelte)
 
 ### Built With
 
-* [ReactJS](https://reactjs.org/)
-* [Styled components](https://styled-components.com/)
-* [React window](https://github.com/bvaughn/react-window)
-* [Storeon](https://github.com/storeon/storeon)
-* [Testcafe](https://devexpress.github.io/testcafe/)
+- [ReactJS](https://reactjs.org/)
+- [Styled components](https://styled-components.com/)
+- [React window](https://github.com/bvaughn/react-window)
+- [Storeon](https://github.com/storeon/storeon)
+- [Testcafe](https://devexpress.github.io/testcafe/)
 
 ### Prerequisites
 
 To run the project correctly you need to install [yarn](https://classic.yarnpkg.com/en/docs/install/) and [chrome](https://www.google.com/chrome/) first
-
 
 ### Installing and running
 
@@ -46,17 +45,13 @@ yarn start
 To run end to end tests you should run app in development mode
 
 ```
-yarn start
+yarn start --host
 ```
 
-then run in another terminal tab/window 
+then run in another terminal tab/window
 
 ```
 yarn e2e
 ```
+
 It starts testcafe tool and tests category change and text search
-
-
-
-
-
