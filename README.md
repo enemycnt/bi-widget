@@ -15,7 +15,7 @@ Svelte version [here](https://github.com/enemycnt/bi-widget-svelte)
 
 ### Prerequisites
 
-To run the project correctly you need to install [yarn](https://classic.yarnpkg.com/en/docs/install/) and [chrome](https://www.google.com/chrome/) first
+To run the project correctly you need to install [pnpm](https://pnpm.io/installation) and [chrome](https://www.google.com/chrome/) first
 
 ### Installing and running
 
@@ -31,13 +31,13 @@ cd bi-widget
 then install dependencies
 
 ```
-yarn install
+pnpm install
 ```
 
 and finally run the app
 
 ```
-yarn start
+pnpm start
 ```
 
 ## Running the tests
@@ -45,13 +45,13 @@ yarn start
 To run end to end tests you should run app in development mode
 
 ```
-yarn start --host
+pnpm start --host
 ```
 
 then run in another terminal tab/window
 
 ```
-yarn e2e
+pnpm e2e
 ```
 
 It starts testcafe tool and tests category change and text search
