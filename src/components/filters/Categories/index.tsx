@@ -1,11 +1,8 @@
-import React from "react";
-
 import { useStoreon } from "storeon/react";
 
-import {CategoriesWrap, Category, TriangleDown} from "./styles"
+import { CategoriesWrap, Category, TriangleDown } from "./styles";
 
-import DropDownCategory from "../DropDownCategory"
-
+import DropDownCategory from "../DropDownCategory";
 
 const Categories = () => {
   const { dispatch, products } = useStoreon("products");

@@ -1,4 +1,4 @@
-export const mergeDeep = (target, ...sources) => {
+export const mergeDeep = (target: any, ...sources: any[]): any => {
   if (!sources.length) return target;
   const source = sources.shift();
 
@@ -16,5 +16,5 @@ export const mergeDeep = (target, ...sources) => {
   return mergeDeep(target, ...sources);
 };
 
-export const addOrRemove = (arr, item) =>
+export const addOrRemove = (arr: any[], item: any) =>
   arr.includes(item) ? arr.filter((i) => i !== item) : [...arr, item];

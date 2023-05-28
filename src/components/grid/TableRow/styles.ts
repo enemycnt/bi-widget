@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface StarWrapProps {
+  active: string;
+}
+
 export const TableCell = styled.div`
   display: flex;
   align-items: center;
@@ -11,7 +15,7 @@ export const TableCellChangeVolume = styled.div`
   text-align: right;
 `;
 
-export const StarWrap = styled.div`
+export const StarWrap = styled.div<StarWrapProps>`
   color: ${(props) => (props.active ? "orange" : "inherit")};
   margin-right: 5px;
   cursor: pointer;

@@ -1,6 +1,14 @@
 import styled from "styled-components";
 
-export const CategoryDropdown = styled.div`
+interface DropCategoryProps {
+  active: string;
+}
+
+interface DropDownItemProps {
+  active: boolean;
+}
+
+export const CategoryDropdown = styled.div<DropCategoryProps>`
   background: ${(props) => (props.active ? "#f2f2f2" : "white")};
   border-radius: 3px;
   color: ${(props) => (props.active ? "#464d57" : "#75808e")};
@@ -24,7 +32,7 @@ export const DropdownList = styled.div`
   border-radius: 3px;
   z-index: 9999;
 `;
-export const DropdownItem = styled.div`
+export const DropdownItem = styled.div<DropDownItemProps>`
   padding: 5px;
   color: ${(props) => (props.active ? "#464d57" : "#75808e")};
   font-weight: ${(props) => (props.active ? "bold" : "normal")};

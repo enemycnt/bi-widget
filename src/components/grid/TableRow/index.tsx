@@ -1,6 +1,6 @@
-import React from 'react';
-import { useStoreon } from "storeon/react"; 
-
+import React from "react";
+import { useStoreon } from "storeon/react";
+import { ItemType } from "ItemType";
 import {
   TableCell,
   TableCellChangeVolume,
@@ -8,9 +8,9 @@ import {
   TableRowFlex,
 } from "./styles";
 
-import ColoredPercent from "../ColoredPercent"
+import ColoredPercent from "../ColoredPercent";
 
-const TableRow = React.memo(({item}) => {
+const TableRow = React.memo(({ item }: { item: ItemType }) => {
   const { dispatch, products } = useStoreon("products");
 
   return (

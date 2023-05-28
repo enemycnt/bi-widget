@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const Button = styled.button`
+interface ButtonProps {
+  primary: boolean;
+}
+
+export const Button = styled.button<ButtonProps>`
   background: ${(props) => (props.primary ? "palevioletred" : "green")};
   color: white;
   font-size: 1em;
@@ -34,7 +38,7 @@ export const BottomPanel = styled.div`
   position: sticky;
   background: #fff;
   display: flex;
-  justify-content: center
+  justify-content: center;
 `;
 
 export const NoData = styled.div`
@@ -43,7 +47,7 @@ export const NoData = styled.div`
   align-items: center;
   flex-direction: column;
   flex-grow: 1;
-`
+`;
 
 export const ErrorData = styled.div`
   display: flex;
@@ -51,4 +55,4 @@ export const ErrorData = styled.div`
   align-items: center;
   color: red;
   flex-grow: 1;
-`
+`;

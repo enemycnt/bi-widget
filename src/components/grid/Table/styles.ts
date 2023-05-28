@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface TableHeaderProps {
+  right?: boolean;
+}
+
 export const TableWrap = styled.div`
   width: 100%;
   display: grid;
@@ -7,7 +11,7 @@ export const TableWrap = styled.div`
   font-size: 12px;
 `;
 
-export const TableHeader = styled.div`
+export const TableHeader = styled.div<TableHeaderProps>`
   position: sticky;
   top: 75px;
   text-align: ${(props) => (props.right ? "right" : "left")};

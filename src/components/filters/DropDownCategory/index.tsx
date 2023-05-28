@@ -13,10 +13,12 @@ import {
 const DropDownCategory = ({ children, active, dropdownItems, marketCategory }) => {
   const { dispatch, products } = useStoreon("products");
   const [show, setShow] = useState(false);
-  const showDropdown = (e) => {
+  const showDropdown = (_e: React.BaseSyntheticEvent) => {
+    console.log("🚀 ~ file: index.tsx:17 ~ showDropdown ~ _e:", _e)
     setShow(!show);
   };
-  const hideDropdown = (e) => {
+  const hideDropdown = (_e: React.BaseSyntheticEvent) => {
+    console.log("🚀 ~ file: index.tsx:20 ~ hideDropdown ~ _e:", _e)
     setShow(false);
   };
 

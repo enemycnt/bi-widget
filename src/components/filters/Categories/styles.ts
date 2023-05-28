@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
+interface CategoryProps {
+  active: boolean;
+}
 export const CategoriesWrap = styled.div`
   margin-top: 10px;
   display: flex;
@@ -8,7 +11,7 @@ export const CategoriesWrap = styled.div`
   font-size: 14px;
 `;
 
-export const Category = styled.div`
+export const Category = styled.div<CategoryProps>`
   display: flex;
   align-items: center;
   padding: 5px;
