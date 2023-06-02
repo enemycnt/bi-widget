@@ -9,6 +9,10 @@ export const CategoriesWrap = styled.div`
   justify-content: space-between;
   color: #75808e;
   font-size: 14px;
+  position: relative;
+  &::-webkit-scrollbar {
+    width: 2px;
+  }
 `;
 
 export const Category = styled.div<CategoryProps>`

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface ButtonProps {
-  primary: boolean;
+  primary?: boolean;
 }
 
 export const Button = styled.button<ButtonProps>`

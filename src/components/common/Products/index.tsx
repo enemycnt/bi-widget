@@ -1,5 +1,17 @@
+import { useStore } from "@nanostores/react";
 import { useEffect } from "react";
-import { useStoreon } from "storeon/react"; // or storeon/preact
+import { ShowedArray } from "storeTypes";
+
+import {
+  $products,
+  productsLoad,
+  wsConnect,
+  wsDisconnect,
+} from "../../../store/products";
+import Categories from "../../filters/Categories";
+import FilterBar from "../../filters/FilterBar";
+import Table from "../../grid/Table";
+import Loader from "../Loader";
 
 import {
   Button,
@@ -10,18 +22,14 @@ import {
   ErrorData,
 } from "./styles";
 
-import Categories from "../../filters/Categories";
-import FilterBar from "../../filters/FilterBar";
-import Table from "../../grid/Table";
-import Loader from "../Loader";
+const Products = () => {
+  const products = useStore($products);
 
-const Products = ({ store }: any) => {
-  const { dispatch, products } = useStoreon("products");
   useEffect(() => {
-    dispatch("products/load");
-  }, [dispatch]);
+    void productsLoad();
+  }, []);
 
-  let showedArray =
+  let showedArray: ShowedArray =
     products.selectedParentMarket === "starred"
       ? "starredData"
       : "filteredData";
@@ -51,12 +59,18 @@ const Products = ({ store }: any) => {
               {products.socketOpen ? (
                 <Button
                   primary
-                  onClick={() => dispatch("products/ws/disconnect")}
+                  onClick={() => {
+                    wsDisconnect();
+                  }}
                 >
                   Disconnect WebSocket
                 </Button>
               ) : (
-                <Button onClick={() => dispatch("products/ws/connect")}>
+                <Button
+                  onClick={() => {
+                    wsConnect();
+                  }}
+                >
                   Reconnect WebSocket
                 </Button>
               )}

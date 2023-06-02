@@ -1,6 +1,10 @@
-import React from 'react';
+import { useStore } from "@nanostores/react";
 
-import { useStoreon } from "storeon/react"; // or storeon/preact
+import {
+  $products,
+  search as productsSearch,
+  selectedColumn,
+} from "../../../store/products";
 
 import {
   CustomLabel,
@@ -11,10 +15,8 @@ import {
   FilterBarWrap,
 } from "./styles";
 
-
 const FilterBar = () => {
-  const { dispatch, products } = useStoreon("products");
-
+  const products = useStore($products);
   return (
     <FilterBarWrap>
       <CustomSearchbar>
@@ -34,7 +36,7 @@ const FilterBar = () => {
           data-testid="search-input"
           placeholder="Search"
           type="search"
-          onChange={(event) => dispatch("products/search", event.target.value)}
+          onChange={(event) => productsSearch(event.target.value)}
         />
       </CustomSearchbar>
 
@@ -46,9 +48,7 @@ const FilterBar = () => {
             name="filter"
             value="change"
             checked={products.changeOrVolume === "change"}
-            onChange={(e) =>
-              dispatch("products/selectedColumn", e.target.value)
-            }
+            onChange={(e) => selectedColumn(e.target.value)}
           />
           <CustomLabel htmlFor="filterChange">Change</CustomLabel>
         </div>
@@ -59,9 +59,7 @@ const FilterBar = () => {
             name="filter"
             value="volume"
             checked={products.changeOrVolume === "volume"}
-            onChange={(e) =>
-              dispatch("products/selectedColumn", e.target.value)
-            }
+            onChange={(e) => selectedColumn(e.target.value)}
           />
           <CustomLabel htmlFor="filterVolume">Volume</CustomLabel>
         </div>

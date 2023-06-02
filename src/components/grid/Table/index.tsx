@@ -1,32 +1,35 @@
+import { ItemType } from "ItemType";
 import React from "react";
-import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
-
-import { TableWrap, TableHeader } from "./styles";
+import { FixedSizeList as List } from "react-window";
+import { Product, ShowedArray } from "storeTypes";
 
 import TableRow from "../TableRow";
 
+import { TableWrap, TableHeader } from "./styles";
+
 interface TableProps {
-  products: any;
-  showedArray: string;
+  products: Product;
+  showedArray: ShowedArray;
 }
 
 interface RowProps {
+  data: Array<ItemType>;
   index: number;
   style: React.CSSProperties | undefined;
 }
 
+const Row = ({ data, index, style }: RowProps) => {
+  const product = data[index];
+  return (
+    <div style={style}>
+      <TableRow key={product.s} item={product} />
+    </div>
+  );
+};
+
 const Table = React.memo(({ products, showedArray }: TableProps) => {
-  const Row = ({ index, style }: RowProps) => {
-    return (
-      <div style={style}>
-        <TableRow
-          key={products[showedArray][index].s}
-          item={products[showedArray][index]}
-        />
-      </div>
-    );
-  };
+
   return (
     <>
       <TableWrap>
@@ -44,6 +47,7 @@ const Table = React.memo(({ products, showedArray }: TableProps) => {
             height={height}
             itemCount={products[showedArray].length}
             itemSize={25}
+            itemData={products[showedArray]}
             width={width}
           >
             {Row}
@@ -53,6 +57,5 @@ const Table = React.memo(({ products, showedArray }: TableProps) => {
     </>
   );
 });
-
 
 export default Table;

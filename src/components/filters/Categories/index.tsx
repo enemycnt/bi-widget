@@ -1,40 +1,50 @@
-import { useStoreon } from "storeon/react";
+import { useStore } from "@nanostores/react";
+import { ParentCategories } from "storeTypes";
+
+import {
+  $products,
+  selectedCategory,
+  toggleStarred,
+} from "../../../store/products";
+import DropDownCategory from "../DropDownCategory";
 
 import { CategoriesWrap, Category, TriangleDown } from "./styles";
 
-import DropDownCategory from "../DropDownCategory";
-
 const Categories = () => {
-  const { dispatch, products } = useStoreon("products");
-
-  const menuLabels = Object.keys(products.parentCategories);
+  const products = useStore($products);
+  if (products.parentCategories.length === 0) return null;
+  const parentCategories = products.parentCategories as ParentCategories;
+  const { selectedParentMarket } = products;
+  const menuLabels = Object.keys(parentCategories);
   const firstMenus = menuLabels
-    .filter((key) => products.parentCategories[key].length === 1)
+    .filter((key) => parentCategories[key].length === 1)
     .sort((a, b) => a.localeCompare(b));
 
   const secondMenus = menuLabels.filter(
-    (key) => products.parentCategories[key].length > 1
+    (key) => parentCategories[key].length > 1
   );
 
   return (
     <CategoriesWrap>
       <Category
         data-testid="starred-category"
-        active={products.selectedParentMarket === "starred"}
-        onClick={() => dispatch("products/toggleStarred")}
+        active={selectedParentMarket === "starred"}
+        onClick={() => {
+          toggleStarred();
+        }}
       >
         ★
       </Category>
       {firstMenus.map((category) => (
         <Category
           data-testid="simple-category"
-          onClick={() =>
-            dispatch("products/selectedCategory", {
+          onClick={() => {
+            selectedCategory({
               category,
               parentMarket: category,
-            })
-          }
-          active={products.selectedParentMarket === category}
+            });
+          }}
+          active={selectedParentMarket === category}
           key={category}
         >
           {category}
@@ -42,9 +52,9 @@ const Categories = () => {
       ))}
       {secondMenus.map((market) => (
         <DropDownCategory
-          active={products.selectedParentMarket === market}
+          active={selectedParentMarket === market}
           key={market}
-          dropdownItems={products.parentCategories[market]}
+          dropdownItems={parentCategories[market]}
           marketCategory={market}
         >
           {market}

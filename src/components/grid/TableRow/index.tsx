@@ -1,6 +1,10 @@
-import React from "react";
-import { useStoreon } from "storeon/react";
+import { useStore } from "@nanostores/react";
 import { ItemType } from "ItemType";
+import React from "react";
+
+import { $products, addToStarred } from "../../../store/products";
+import ColoredPercent from "../ColoredPercent";
+
 import {
   TableCell,
   TableCellChangeVolume,
@@ -8,17 +12,17 @@ import {
   TableRowFlex,
 } from "./styles";
 
-import ColoredPercent from "../ColoredPercent";
-
 const TableRow = React.memo(({ item }: { item: ItemType }) => {
-  const { dispatch, products } = useStoreon("products");
+  const products = useStore($products);
 
   return (
     <TableRowFlex>
       <TableCell title={item.s}>
         <StarWrap
           active={products.starredData.includes(item)}
-          onClick={() => dispatch("products/addToStarred", item)}
+          onClick={() => {
+            addToStarred(item);
+          }}
         >
           ★
         </StarWrap>

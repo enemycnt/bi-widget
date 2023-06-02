@@ -1,8 +1,9 @@
-import React from "react";
 import { ItemType } from "ItemType";
+import { memo } from "react";
+
 import { ColoredWrap } from "./styles";
 
-const ColoredPercent = React.memo(({ item }: { item: ItemType }) => {
+const ColoredPercent = memo(({ item }: { item: ItemType }) => {
   const value = (item.o - item.c) / item.o;
   const sign = Math.sign(value) === 1 ? "+" : "–";
   const formattedValue = Math.abs(value).toFixed(2);

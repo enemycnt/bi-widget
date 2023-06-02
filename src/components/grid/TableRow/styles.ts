@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface StarWrapProps {
-  active: string;
+  active: boolean;
 }
 
 export const TableCell = styled.div`
