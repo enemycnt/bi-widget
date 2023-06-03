@@ -1,5 +1,4 @@
 import { useStore } from "@nanostores/react";
-import { allTasks, cleanStores, onMount } from "nanostores";
 import { useEffect, useRef } from "react";
 import { ShowedArray } from "storeTypes";
 
