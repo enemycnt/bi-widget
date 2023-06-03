@@ -165,31 +165,31 @@ export const selectedCategory = action(
 
 export const wsConnect = action($products, "products/ws/connect", (store) => {
   const socket = new WebSocket(WEBSOCKET_URL);
-
-  socket.onopen = () => {
-    store.set({
-      ...store.get(),
-      socket,
-      socketEstablished: true,
-      socketOpen: true,
-    });
-    socket.onmessage = (event: { data: unknown }) => {
+  socket.onopen = function () {
+    socket.onmessage = function (event: { data: unknown }) {
       const payload = JSON.parse(event.data as string) as {
         data: Array<StreamItemRaw>;
       };
       wsSave(payload.data);
     };
-    socket.onclose = () => {
-      wsDisconnect();
+    socket.onclose = function () {
+      // wsDisconnect();
     };
   };
+  store.set({
+    ...store.get(),
+    socket,
+    socketEstablished: true,
+    socketOpen: true,
+  });
 });
 
 export const wsDisconnect = action(
   $products,
   "products/ws/disconnect",
   (store) => {
-    store.get().socket?.close();
+    const { socket } = store.get();
+    socket?.close();
     store.setKey("socketOpen", false);
     store.setKey("socket", null);
   }
@@ -226,10 +226,8 @@ export const wsSave = action(
         [key: string]: StreamItem;
       }
     );
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const mergedProducts = mergeDeep(prevPoductsKeyed, newProductsKeyed);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    const values = Object.values(mergedProducts) as unknown as Array<ItemType>;
+    const values = Object.values(mergedProducts);
     store.setKey("filteredData", values);
   }
 );

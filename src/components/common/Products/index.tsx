@@ -1,5 +1,6 @@
 import { useStore } from "@nanostores/react";
-import { useEffect } from "react";
+import { allTasks, cleanStores, onMount } from "nanostores";
+import { useEffect, useRef } from "react";
 import { ShowedArray } from "storeTypes";
 
 import {
@@ -24,9 +25,15 @@ import {
 
 const Products = () => {
   const products = useStore($products);
+  const socketRef = useRef<WebSocket | null>(null);
 
   useEffect(() => {
     void productsLoad();
+    wsConnect();
+    socketRef.current = products.socket;
+    return () => {
+      wsDisconnect();
+    };
   }, []);
 
   let showedArray: ShowedArray =
@@ -71,7 +78,7 @@ const Products = () => {
                     wsConnect();
                   }}
                 >
-                  Reconnect WebSocket
+                  Connect WebSocket
                 </Button>
               )}
             </BottomPanel>
