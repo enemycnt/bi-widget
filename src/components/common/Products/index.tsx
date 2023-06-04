@@ -33,7 +33,7 @@ const Products = () => {
     return () => {
       wsDisconnect();
     };
-  }, []);
+  }, [products.socket]);
 
   let showedArray: ShowedArray =
     products.selectedParentMarket === "starred"

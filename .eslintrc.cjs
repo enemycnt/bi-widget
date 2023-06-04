@@ -11,7 +11,7 @@ module.exports = {
   parserOptions: {
     project: ["./tsconfig.json"], // Specify it only for TypeScript files
   },
-  plugins: ["react-refresh", "@typescript-eslint", "import"],
+  plugins: ["react-refresh", "@typescript-eslint", "import", "@emotion"],
   rules: {
     "react-refresh/only-export-components": "warn",
     "import/order": [
