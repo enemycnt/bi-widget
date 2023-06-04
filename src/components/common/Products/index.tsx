@@ -25,15 +25,15 @@ import {
 const Products = () => {
   const products = useStore($products);
   const socketRef = useRef<WebSocket | null>(null);
+  socketRef.current = products.socket;
 
   useEffect(() => {
     void productsLoad();
     wsConnect();
-    socketRef.current = products.socket;
     return () => {
       wsDisconnect();
     };
-  }, [products.socket]);
+  }, []);
 
   let showedArray: ShowedArray =
     products.selectedParentMarket === "starred"
