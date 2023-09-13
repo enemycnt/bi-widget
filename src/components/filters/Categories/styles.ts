@@ -10,6 +10,8 @@ export const CategoriesWrap = styled.div`
   color: #75808e;
   font-size: 14px;
   position: relative;
+  overflow-x: auto;
+  width: inherit;
   &::-webkit-scrollbar {
     width: 2px;
   }
